@@ -1,0 +1,29 @@
+heat.exe dir "C:\project\myapp\bin\Release" -dr INSTALLFOLDER -cg ProductComponent -gg -scom -sreg -sfrag -out "C:\project\mySetupProject\myapp.wxs"
+
+C:\Users\qzhengx097298>cd C:\Program Files (x86)\WiX Toolset v3.11\bin
+其中C:\project\myapp\bin\Release是你要安装的文件所在目录，heat会扫描目录下所有文件，包括子目录。生成的文件位置在C:\project\mySetupProject\myapp.wxs，也就是out参数指定的地方。
+这里mySetupProject是安装程序本身的工程。wix工程会扫描工程目录下所有wxs文件，一起进行编译链接。
+注意生成后的File节点的Source属性可能不正确，需要替换成$(var.myapp.TargetDir)，这里myapp是指你自己的应用程序的项目名。
+
+•运行candle.exe，生成wix对象文件
+candle.exe Example_Installer.wxs
+candle.exe C:\WorkProject\WiX_Toolset_v3.11.2\mySetupProject\myapp.wxs
+C:\Users\qzhengx097298>candle.exe C:\WorkProject\WiX_Toolset_v3.11.2\mySetupProject\myapp.wxs
+C:\Users\qzhengx097298文件夹下生成 myapp.wixobj
+
+•运行light.exe，生成安装程序，
+light.exe -ext WixUIExtension Example_Installer.wixobj
+
+
+cd C:\WorkProject\WiX_Toolset_v3.11.2\TestLitho
+candle.exe SampleWixUI.wxs
+light.exe -ext WixUIExtension SampleWixUI.wixobj
+
+heat.exe dir "C:\WorkProject\WiX_Toolset_v3.11.2\TestWixTool\SetupLitho\SetupLitho\netcoreapp3.1" -dr INSTALLFOLDER -cg ProductComponent -gg -scom -sreg -sfrag -out "C:\WorkProject\WiX_Toolset_v3.11.2\mySetupWxs\Litho\LithoApp.wxs"
+C:\WorkProject\WiX_Toolset_v3.11.2\mySetupWxs\Litho>candle.exe LithoApp.wxs
+C:\WorkProject\WiX_Toolset_v3.11.2\mySetupWxs\Litho>light.exe -ext WixUIExtension LithoApp.wixobj
+
+heat.exe dir "C:\WorkProject\WiX_Toolset_v3.11.2\TestWixTool\SetupEtch\SetupEtch\netcoreapp3.1" -dr INSTALLFOLDER -cg ProductComponent -gg -scom -sreg -sfrag -out "C:\WorkProject\WiX_Toolset_v3.11.2\mySetupWxs\Etch\EtchApp.wxs"
+
+GUID生成工具
+https://www.guidgen.com/

@@ -1,0 +1,15 @@
+CD C:\Program Files (x86)\Microsoft\ILMerge
+
+ilmerge /ndebug /target:exe /out:D:\Test\New_ConsoleApp12.exe /log D:\Test\ConsoleApp12.exe /log D:\Test\Newtonsoft.Json.dll /targetplatform:v4
+
+
+ILMerge.exe /target:library /targetplatform:v4 /out:"EIS.XML.Message.HelperEx.dll" "EIS.XML.Parser.dll" /log:"dd.log" "EIS.XML.Message.Helper.dll" /log:"dd.log" 
+
+ILMerge.exe /target:library /targetplatform:v4 /out:C:\zqk\MergeDll\JsonHelperEx.dll  /log C:\zqk\Dll\Newtonsoft.Json.dll /log C:\zqk\Dll\JsonHelper.dll
+
+
+ilmerge /ndebug /target:library /targetplatform:v4 /out:C:\zqk\MergeDll\JsonHelperEx.dll /log C:\zqk\MergeDll\Dll\Newtonsoft.Json.dll /log C:\zqk\MergeDll\Dll\JsonHelper.dll
+
+ilmerge /ndebug /target:library /targetplatform:v4 /out:C:\zqk\MergeDll\JsonHelperEx.dll /log C:\zqk\MergeDll\Dll\Newtonsoft.Json.dll /log C:\zqk\MergeDll\Dll\JsonConvertHelp.dll
+
+
